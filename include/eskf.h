@@ -117,9 +117,9 @@ private:
     void ResetState();
 
 private:
-    static const unsigned int DIM_STATE = 15;
+    static const unsigned int DIM_STATE = 15; /// 位置、速度、姿态、bg、ba，各3维，共15维
     static const unsigned int DIM_STATE_NOISE = 6;
-    static const unsigned int DIM_MEASUREMENT = 3;
+    static const unsigned int DIM_MEASUREMENT = 3; /// gps位置，共3维
     static const unsigned int DIM_MEASUREMENT_NOISE = 3;
 
     static const unsigned int INDEX_STATE_POSI = 0;
