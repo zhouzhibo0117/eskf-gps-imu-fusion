@@ -84,6 +84,8 @@ bool ErrorStateKalmanFilter::Correct(const GPSData &curr_gps_data) {
 
     Y_ = curr_gps_data.local_position_ned - pose_.block<3, 1>(0, 3);
 
+    /// 计算卡尔曼增益K
+    /// 此代码中观测方程矩阵G（其他文献中一般称为H）是一个定值，因为本文gnss观测的应用非常简单。其他一般应用中，H矩阵可能需要每次都重新计算。
     K_ = P_ * G_.transpose() * (G_ * P_ * G_.transpose() + C_ * R_ * C_.transpose()).inverse();
 
     P_ = (TypeMatrixP::Identity() - K_ * G_) * P_;
